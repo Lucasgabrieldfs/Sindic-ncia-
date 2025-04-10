@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obrigado, chefe!</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: black;
+      overflow: hidden;
+      font-family: system-ui, sans-serif;
+    }
+
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      opacity: 0.5;
+      z-index: -1;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    h1, h2 {
+      color: rgb(255, 190, 26);
+      text-shadow: 0 0 8px black;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+
+    h1 {
+      font-size: 36px;
+    }
+
+    h2 {
+      font-size: 30px;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .atributo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 0;
+      opacity: 0;
+      transform: translateX(-100px);
+      transition: all 1s;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .valor {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .positivo {
+      color: rgb(5, 180, 5);
+    }
+
+    .negativo {
+      color: red;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: rgb(255, 190, 26);
+      border: none;
+      font-weight: 800;
+      font-size: 18px;
+      cursor: pointer;
+      opacity: 0;
+      transition: 0.5s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <img src="./supersayajin.gif" alt="Super Sayajin" class="background">
+
+  <div class="container">
+    <h1>OBRIGADO, CHEFE</h1>
+    <h2>Atributos melhorados:</h2>
+
+    <div class="atributo" id="att1">
+      <span>Admiração:</span><span class="valor positivo">+40%</span>
+    </div>
+
+    <div class="atributo" id="att2">
+      <span>Gratidão ao chefe:</span><span class="valor positivo">+23%</span>
+    </div>
+
+    <div class="atributo" id="att3">
+      <span>Vontade de se demitir:</span><span class="valor negativo">-75%</span>
+    </div>
+
+    <div class="atributo" id="att4">
+      <span>Mau humor:</span><span class="valor negativo">-17%</span>
+    </div>
+
+    <button id="extraBtn">DISPENSA EXTRA</button>
+  </div>
+
+  <script>
+    const showElement = (selector, delay, transformBack = true) => {
+      setTimeout(() => {
+        const el = document.querySelector(selector);
+        el.style.opacity = '1';
+        if (transformBack) el.style.transform = 'translateX(0)';
+      }, delay);
+    };
+
+    const sequence = () => {
+      showElement('h1', 100);
+      showElement('h2', 400);
+      showElement('#att1', 700);
+      showElement('#att2', 1000);
+      showElement('#att3', 1300);
+      showElement('#att4', 1600);
+      showElement('#extraBtn', 2000, false);
+    };
+
+    window.onload = sequence;
+
+    document.getElementById('extraBtn').addEventListener('click', () => {
+      alert("Você ganhou mais 3 dias de folga! 🥳");
+    });
+  </script>
+
+</body>
+</html>
